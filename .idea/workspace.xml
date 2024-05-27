@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d56148c0-6afb-4b0c-a6a1-9c8a47b48a04" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/10.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/11.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/12.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/13.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/13.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/14.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/14.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/15.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/15.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/16.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/16.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/17.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/17.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/18.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/18.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/19.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/19.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/20.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/20.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/21.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/21.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/22.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/22.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/8.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pictures/Background/9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/9.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;BIGxPIG&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/BIGxPIG/DungeonsAndDragonsApp.git&quot;,
+    &quot;accountId&quot;: &quot;7926d64b-6ea3-47b2-bcd4-9f936cd96afa&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2getnFi8xRa1snZcfwTdDoEAjg7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/D&D/pythonProject1",
+    "settings.editor.selected.configurable": "vcs.Git"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\D&amp;D\pythonProject1\Pictures" />
+      <recent name="C:\D&amp;D\pythonProject1\Pictures\Icon" />
+      <recent name="C:\D&amp;D\pythonProject1\Pictures\Background" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\D&amp;D\pythonProject1\Characters" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="pythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-babbdf50b680-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.15989.155" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d56148c0-6afb-4b0c-a6a1-9c8a47b48a04" name="Changes" comment="" />
+      <created>1716070036149</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716070036149</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+</project>

@@ -5,31 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d56148c0-6afb-4b0c-a6a1-9c8a47b48a04" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/10.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/11.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/12.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/13.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/13.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/14.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/14.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/15.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/15.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/16.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/16.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/17.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/17.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/18.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/18.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/19.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/19.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/20.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/20.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/21.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/21.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/22.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/22.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/6.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/7.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/8.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pictures/Background/9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/Background/9.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +24,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/BIGxPIG/DungeonsAndDragonsApp.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/BIGxPIG/DnDApp.git&quot;,
     &quot;accountId&quot;: &quot;7926d64b-6ea3-47b2-bcd4-9f936cd96afa&quot;
   }
 }</component>
@@ -63,12 +39,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Python.main.executor": "Debug",
+    "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/D&D/pythonProject1",
-    "settings.editor.selected.configurable": "vcs.Git"
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/D&D/pythonProject2/main.py",
+    "settings.editor.selected.configurable": "vcs.Mercurial"
   }
 }]]></component>
   <component name="RecentsManager">

@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QPushButton, QL
 from PyQt5.QtGui import QPixmap, QPalette, QBrush, QIcon
 from PyQt5.QtCore import Qt, QTimer
 
-# Main application window
+# Главное окно приложения
 class MainWindow(QWidget):
     def __init__(self, image_folder, icon_path, music_folder):
         super().__init__()
@@ -25,19 +25,17 @@ class MainWindow(QWidget):
         self.init_ui()
         self.init_music()
 
-        self.race_bonuses = {}
-
     def init_ui(self):
         self.setWindowIcon(QIcon(self.icon_path))
         self.set_random_background()
         self.create_buttons()
         self.showFullScreen()
-        self.setWindowTitle('Random Background App')
+        self.setWindowTitle("D&D character creator")
 
     def create_buttons(self):
-        self.create_character_button = self.create_button('Создать персонажа', self.show_race_selection)
-        self.view_characters_button = self.create_button('Список персонажей', self.show_character_list)
-        self.exit_button = self.create_button('Выход', self.close)
+        self.create_character_button = self.create_button("Создать персонажа", self.show_race_selection)
+        self.view_characters_button = self.create_button("Список персонажей", self.show_character_list)
+        self.exit_button = self.create_button("Выход", self.close)
 
         button_layout = QVBoxLayout()
         button_layout.addWidget(self.create_character_button)
@@ -71,8 +69,7 @@ class MainWindow(QWidget):
 
     def update_background(self):
         if self.current_background:
-            scaled_pixmap = self.current_background.scaled(self.size(), Qt.KeepAspectRatioByExpanding,
-                                                           Qt.SmoothTransformation)
+            scaled_pixmap = self.current_background.scaled(self.size(), Qt.KeepAspectRatioByExpanding, Qt.SmoothTransformation)
             palette = QPalette()
             palette.setBrush(QPalette.Background, QBrush(scaled_pixmap))
             self.setPalette(palette)
@@ -81,7 +78,7 @@ class MainWindow(QWidget):
         if not self.is_creating_character and not self.is_viewing_characters:
             self.is_creating_character = True
             self.is_viewing_characters = False
-            self.hide_widget_if_exists('character_list_widget')
+            self.hide_widget_if_exists("character_list_widget")
             self.race_selection_widget = RaceSelectionWidget(self)
             self.layout().addWidget(self.race_selection_widget)
             self.race_selection_widget.show()
@@ -90,7 +87,7 @@ class MainWindow(QWidget):
         if not self.is_viewing_characters and not self.is_creating_character:
             self.is_viewing_characters = True
             self.is_creating_character = False
-            self.hide_widget_if_exists('race_selection_widget')
+            self.hide_widget_if_exists("race_selection_widget")
             self.character_list_widget = CharacterListWidget(self)
             self.layout().addWidget(self.character_list_widget)
             self.character_list_widget.show()
@@ -131,15 +128,18 @@ class MainWindow(QWidget):
         pygame.display.init()
         pygame.mixer.init()
 
-        self.music_files = [f for f in os.listdir(self.music_folder) if os.path.isfile(os.path.join(self.music_folder, f))]
+        self.music_files = [f for f in os.listdir(self.music_folder)if os.path.isfile(os.path.join(self.music_folder, f))]
         if not self.music_files:
             raise Exception("No music files found in the specified directory.")
         self.play_random_music()
 
     def play_random_music(self):
-        random_music_path = os.path.join(self.music_folder, random.choice(self.music_files))
+        random_music_path = os.path.join(
+            self.music_folder, random.choice(self.music_files)
+        )
         pygame.mixer.music.load(random_music_path)
         pygame.mixer.music.play()
+        pygame.mixer.music.set_volume(0.1)
         pygame.mixer.music.set_endevent(pygame.USEREVENT)
         self.music_timer = QTimer(self)
         self.music_timer.timeout.connect(self.check_music_end)
@@ -150,11 +150,11 @@ class MainWindow(QWidget):
             if event.type == pygame.USEREVENT:
                 self.play_random_music()
 
-# Race selection widget
+
+# Окно выбора расы
 class RaceSelectionWidget(QWidget):
     def __init__(self, parent):
         super().__init__(parent)
-        self.setWindowTitle("Выбор расы")
         self.parent = parent
         self.selected_race = None
         self.race_bonuses = {}
@@ -162,53 +162,53 @@ class RaceSelectionWidget(QWidget):
             "Человек": {
                 "description": "Раса людей не придерживается какого-то одного ремесла, поэтому им легко в любых начинаниях",
                 "features": "Дополнительный бонус +1 ко всем характеристикам.",
-                "bonuses": {"Сила": 1, "Ловкость": 1, "Телосложение": 1, "Интеллект": 1, "Мудрость": 1, "Харизма": 1}
+                "bonuses": {"Сила": 1,"Ловкость": 1,"Телосложение": 1,"Интеллект": 1,"Мудрость": 1,"Харизма": 1,},
             },
             "Драконорождённый": {
                 "description": "Мистическая раса, чьё происхождение так и не было до конца раскрыто",
                 "features": "Наследие дракона (Сопротивление стихии и драконье дыхание своего родителя)",
-                "bonuses": {"Сила": 2, "Харизма": 1}
+                "bonuses": {"Сила": 2, "Харизма": 1},
             },
             "Эльф": {
                 "description": "Адепты лесной магии и природы. Они проворны, мудры и красноречивы",
                 "features": "Темновидение, защита от очарования, магическая способность.",
-                "bonuses": {"Ловкость": 2}
+                "bonuses": {"Ловкость": 2},
             },
             "Тифлинг": {
                 "description": "По большей части раса людей, в чьих жилах крепко накрепко засела дьявольская кровь",
                 "features": "Темновидение, сопротивление огню, дьявольское наследие (мелкое колдовство).",
-                "bonuses": {"Интеллект": 1, "Харизма": 2}
+                "bonuses": {"Интеллект": 1, "Харизма": 2},
             },
             "Дварф": {
                 "description": "Горный народ, известный своей жадностью, огромным волосяным покровом и грубой силой",
                 "features": "Темновидение, стойкость, устойчивость к ядам.",
-                "bonuses": {"Телосложение": 2}
+                "bonuses": {"Телосложение": 2},
             },
             "Халфлинг": {
                 "description": "Полурослики, чей род часто тратит своё свободное время на отдых и безделье. По характеру чем-то похожи на известных хоббитов",
                 "features": "Темновидение, защита от испуга, ловкость рук.",
-                "bonuses": {"Ловкость": 2}
+                "bonuses": {"Ловкость": 2},
             },
             "Гном": {
                 "description": "Не путайте их с Дварфами. В отличие от них, Гномы живут на лугах и лесах, предпочитая грубой силе умственную работу",
                 "features": "Темновидение, сопротивление магии, гномья хитрость.",
-                "bonuses": {"Интеллект": 2}
+                "bonuses": {"Интеллект": 2},
             },
             "Полуэльф": {
                 "description": "Полуэльфы — это смесь эльфов и людей. Они совмещают в себе магические силы и способности к адаптации, которые используют для жизни среди людей",
                 "features": "Темновидение, устойчивость к очарованию, дополнительное мастерство.",
-                "bonuses": {"Ловкость": 1, "Харизма": 2}
+                "bonuses": {"Ловкость": 1, "Харизма": 2},
             },
             "Полуорк": {
                 "description": "Сила и умение выживать унаследована от орков, а по происхождению являются смесью людей и орков",
                 "features": "Темновидение, ярость, сила зверя.",
-                "bonuses": {"Сила": 2, "Телосложение": 1}
+                "bonuses": {"Сила": 2, "Телосложение": 1},
             },
-            "Пепельный эльф": {
+            "Тёмный эльф": {
                 "description": "Эльфы, чьё происхождение отличается от лесных. Их далекие предки были тесно связаны с силами зла",
                 "features": "Темновидение, устойчивость к огню, магическая способность.",
-                "bonuses": {"Ловкость": 1, "Интеллект": 1, "Харизма": 1}
-            }
+                "bonuses": {"Ловкость": 1, "Интеллект": 1, "Харизма": 1},
+            },
         }
         self.init_ui()
 
@@ -219,8 +219,8 @@ class RaceSelectionWidget(QWidget):
         self.layout = QVBoxLayout()
         self.display_races()
 
-        self.next_button = QPushButton('Далее', self)
-        self.exit_button = QPushButton('Выход', self)
+        self.next_button = QPushButton("Далее", self)
+        self.exit_button = QPushButton("Выход", self)
         self.next_button.setEnabled(False)
         self.next_button.clicked.connect(self.proceed_to_next_step)
         self.exit_button.clicked.connect(self.close)
@@ -231,7 +231,7 @@ class RaceSelectionWidget(QWidget):
         main_layout.addWidget(self.exit_button)
         self.setStyleSheet("background-style:white;")
         self.setLayout(main_layout)
-        QMessageBox.information(self, 'Раса', 'Выберите расу персонажа')
+        QMessageBox.information(self, "Раса", "Выберите расу персонажа")
 
     def update_scroll_area(self):
         self.widget.setLayout(self.layout)
@@ -254,28 +254,37 @@ class RaceSelectionWidget(QWidget):
 
     def create_race_option(self, race_name, race_info):
         race_radio_button = QRadioButton(race_name)
-        race_radio_button.clicked.connect(lambda _, rn=race_name, rb=race_info["bonuses"]: self.select_race(rn, rb))
+        race_radio_button.clicked.connect(
+            lambda _, rn=race_name, rb=race_info["bonuses"]: self.select_race(rn, rb)
+        )
         self.layout.addWidget(race_radio_button)
 
         description_label = QLabel(race_info["description"])
         features_label = QLabel("Особенности расы: " + race_info["features"])
-        bonuses_label = QLabel("Дополнительные бонусы: " + ", ".join(f"{key} +{value}" for key, value in race_info["bonuses"].items()))
+        bonuses_label = QLabel(
+            "Дополнительные бонусы: "
+            + ", ".join(
+                f"{key} +{value}" for key, value in race_info["bonuses"].items()
+            )
+        )
 
         self.layout.addWidget(description_label)
         self.layout.addWidget(features_label)
         self.layout.addWidget(bonuses_label)
 
     def proceed_to_next_step(self):
-        self.class_selection_widget = ClassSelectionWidget(self.parent, self.selected_race, self.race_bonuses)
+        self.class_selection_widget = ClassSelectionWidget(
+            self.parent, self.selected_race, self.race_bonuses
+        )
         self.class_selection_widget.show()
         self.parent.layout().addWidget(self.class_selection_widget)
         self.hide()
 
-# Class selection widget
+
+# Окно выбора класса
 class ClassSelectionWidget(QWidget):
     def __init__(self, parent, selected_race, race_bonuses):
         super().__init__(parent)
-        self.setWindowTitle("Выбор класса")
         self.parent = parent
         self.selected_class = None
         self.selected_race = selected_race
@@ -289,8 +298,8 @@ class ClassSelectionWidget(QWidget):
         self.layout = QVBoxLayout()
         self.display_classes()
 
-        self.next_button = QPushButton('Далее', self)
-        self.back_button = QPushButton('Назад', self)
+        self.next_button = QPushButton("Далее", self)
+        self.back_button = QPushButton("Назад", self)
         self.next_button.setEnabled(False)
         self.next_button.clicked.connect(self.proceed_to_next_step)
         self.back_button.clicked.connect(self.return_to_previous_step)
@@ -301,7 +310,7 @@ class ClassSelectionWidget(QWidget):
         main_layout.addWidget(self.back_button)
         self.setStyleSheet("background-style:white;")
         self.setLayout(main_layout)
-        QMessageBox.information(self, 'Класс', 'Выберите класс персонажа')
+        QMessageBox.information(self, "Класс", "Выберите класс персонажа")
 
     def update_scroll_area(self):
         self.widget.setLayout(self.layout)
@@ -334,7 +343,9 @@ class ClassSelectionWidget(QWidget):
 
     def create_class_option(self, class_name, class_description):
         class_radio_button = QRadioButton(class_name)
-        class_radio_button.clicked.connect(lambda _, cn=class_name: self.select_class(cn))
+        class_radio_button.clicked.connect(
+            lambda _, cn=class_name: self.select_class(cn)
+        )
         self.layout.addWidget(class_radio_button)
         self.layout.addWidget(QLabel(class_description))
 
@@ -346,14 +357,22 @@ class ClassSelectionWidget(QWidget):
         self.parent.race_selection_widget.show()
         self.hide()
 
-# Stat selection widget
+
+# Окно распределения характеристик
 class StatSelectionWidget(QWidget):
     def __init__(self, parent, class_selection_widget, selected_race, race_bonuses):
         super().__init__(parent)
         self.parent = parent
         self.class_selection_widget = class_selection_widget
         self.selected_race = selected_race
-        self.stats = {"Сила": 0, "Ловкость": 0, "Телосложение": 0, "Интеллект": 0, "Мудрость": 0, "Харизма": 0}
+        self.stats = {
+            "Сила": 0,
+            "Ловкость": 0,
+            "Телосложение": 0,
+            "Интеллект": 0,
+            "Мудрость": 0,
+            "Харизма": 0,
+        }
         self.selected_values = {}
         self.race_bonuses = race_bonuses
         self.init_ui()
@@ -371,28 +390,39 @@ class StatSelectionWidget(QWidget):
         for stat, bonus in self.race_bonuses.items():
             self.stats[stat] += bonus
 
-        stat_distribution_label = QLabel("Стандартное распределение характеристик: 15, 14, 13, 12, 10, 8")
+        stat_distribution_label = QLabel(
+            "Стандартное распределение характеристик: 15, 14, 13, 12, 10, 8")
+        stat_distribution_label_2=QLabel("Совет: Чем выше модификатор(значение в скобках), тем лучше вы будете справляться с проверками характеристик")
         inner_layout.addWidget(stat_distribution_label)
+        inner_layout.addWidget(stat_distribution_label_2)
 
         for stat in self.stats.keys():
             h_layout = QHBoxLayout()
-            stat_label = QLabel(f"{stat} (бонус от расы: +{self.race_bonuses.get(stat, 0)})")
+            stat_label = QLabel(
+                f"{stat} (бонус от расы: +{self.race_bonuses.get(stat, 0)})"
+            )
             stat_combobox = QComboBox()
-            stat_combobox.addItems(['15', '14', '13', '12', '10', '8', '0'])
+            stat_combobox.addItems(["15", "14", "13", "12", "10", "8", "0"])
             stat_combobox.setCurrentIndex(6)
-            stat_combobox.currentIndexChanged.connect(lambda _, s=stat, cb=stat_combobox: self.update_stat(s, cb.currentText()))
+            stat_combobox.currentIndexChanged.connect(
+                lambda _, s=stat, cb=stat_combobox: self.update_stat(
+                    s, cb.currentText()
+                )
+            )
             h_layout.addWidget(stat_label)
             h_layout.addWidget(stat_combobox)
             self.stat_comboboxes[stat] = stat_combobox
 
-            final_stat_label = QLabel(f"Итоговое значение и модификатор: {self.stats[stat]} ({math.floor((self.stats[stat] - 10) / 2)})")
+            final_stat_label = QLabel(
+                f"Итоговое значение и модификатор: {self.stats[stat]} ({math.floor((self.stats[stat] - 10) / 2)})"
+            )
             self.final_stat_labels[stat] = final_stat_label
             h_layout.addWidget(final_stat_label)
 
             inner_layout.addLayout(h_layout)
 
-        self.next_button = QPushButton('Далее', self)
-        self.back_button = QPushButton('Назад', self)
+        self.next_button = QPushButton("Далее", self)
+        self.back_button = QPushButton("Назад", self)
         self.next_button.setEnabled(False)
         self.next_button.clicked.connect(self.proceed_to_next_step)
         self.back_button.clicked.connect(self.return_to_previous_step)
@@ -407,23 +437,29 @@ class StatSelectionWidget(QWidget):
         self.layout.addWidget(self.scroll_area)
         self.setStyleSheet("font-size: 16px;")
         self.setLayout(self.layout)
-        QMessageBox.information(self, 'Характеристики', 'Распределите характеристики персонажа')
+        QMessageBox.information(
+            self, "Характеристики", "Распределите характеристики персонажа"
+        )
 
     def update_stat(self, stat, value):
-        if value and value != '0':
+        if value and value != "0":
             self.selected_values[stat] = value
         else:
             self.selected_values.pop(stat, None)
 
-        self.stats[stat] = int(value) + self.race_bonuses.get(stat, 0) if value != '0' else 0
+        self.stats[stat] = (
+            int(value) + self.race_bonuses.get(stat, 0) if value != "0" else 0
+        )
         modifier = math.floor((self.stats[stat] - 10) / 2)
-        self.final_stat_labels[stat].setText(f"Итоговое значение и модификатор: {self.stats[stat]} ({modifier})")
+        self.final_stat_labels[stat].setText(
+            f"Итоговое значение и модификатор: {self.stats[stat]} ({modifier})"
+        )
         self.update_comboboxes()
 
         self.next_button.setEnabled(len(self.selected_values) == len(self.stats))
 
     def update_comboboxes(self):
-        all_values = {'0', '15', '14', '13', '12', '10', '8'}
+        all_values = {"0", "15", "14", "13", "12", "10", "8"}
         used_values = set(self.selected_values.values())
 
         for stat, combobox in self.stat_comboboxes.items():
@@ -435,7 +471,9 @@ class StatSelectionWidget(QWidget):
                 if value == current_value or value not in used_values:
                     combobox.addItem(value)
 
-            combobox.setCurrentText(current_value if current_value in all_values else '0')
+            combobox.setCurrentText(
+                current_value if current_value in all_values else "0"
+            )
             combobox.blockSignals(False)
 
     def proceed_to_next_step(self):
@@ -447,11 +485,11 @@ class StatSelectionWidget(QWidget):
         self.class_selection_widget.show()
         self.hide()
 
-# Character description widget
+
+# Окно описания персонажа
 class CharacterDescriptionWidget(QDialog):
     def __init__(self, parent, selected_race, stat_selection_widget):
         super().__init__(parent)
-        self.setWindowTitle("Описание персонажа")
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setGeometry(276, 76, 1555, 922)
         self.character_description = ""
@@ -459,7 +497,9 @@ class CharacterDescriptionWidget(QDialog):
         self.selected_race = selected_race
         self.stat_selection_widget = stat_selection_widget
         self.race_bonuses = parent.race_bonuses
-        self.class_selection_widget = parent.stat_selection_widget.class_selection_widget
+        self.class_selection_widget = (
+            parent.stat_selection_widget.class_selection_widget
+        )
         self.init_ui()
 
     def init_ui(self):
@@ -480,9 +520,9 @@ class CharacterDescriptionWidget(QDialog):
         self.description_edit = QTextEdit()
         layout.addWidget(self.description_edit)
 
-        self.next_button = QPushButton('Далее', self)
+        self.next_button = QPushButton("Далее", self)
         self.next_button.setEnabled(False)
-        self.back_button = QPushButton('Назад', self)
+        self.back_button = QPushButton("Назад", self)
         self.next_button.clicked.connect(self.proceed_to_next_step)
         self.back_button.clicked.connect(self.return_to_previous_step)
 
@@ -491,7 +531,7 @@ class CharacterDescriptionWidget(QDialog):
         self.setStyleSheet("background-style:white;")
         self.setStyleSheet("font-size: 16px;")
         self.setLayout(layout)
-        QMessageBox.information(self, 'Описание', 'Введите Имя и описание персонажа')
+        QMessageBox.information(self, "Описание", "Введите Имя и описание персонажа")
 
     def check_input(self):
         self.next_button.setEnabled(bool(self.name_edit.text().strip()))
@@ -511,7 +551,8 @@ class CharacterDescriptionWidget(QDialog):
         self.parent().is_creating_character = False
         self.close()
 
-# Equipment selection widget
+
+# Окно выбора снаряжения
 class EquipmentSelectionWidget(QDialog):
     def __init__(self, description_window):
         super().__init__(description_window)
@@ -520,10 +561,10 @@ class EquipmentSelectionWidget(QDialog):
         self.setGeometry(276, 76, 1555, 922)
         self.description_window = description_window
         self.selected_equipment = {
-            'оружие': None,
-            'снаряжение': None,
-            'инструменты': None,
-            'снаряжение класса': None
+            "оружие": None,
+            "снаряжение": None,
+            "инструменты": None,
+            "снаряжение класса": None,
         }
         self.init_ui()
 
@@ -532,84 +573,108 @@ class EquipmentSelectionWidget(QDialog):
         class_name = self.description_window.class_selection_widget.selected_class
 
         equipment = {
-            'Бард': {
-                'оружие': ["Рапира", "Длинный меч", "Кинжал"],
-                'снаряжение': ["Кожаная броня", "Мантия"],
-                'инструменты': ["Набор артиста", "Набор дипломата", "Набор книг"],
-                'снаряжение класса': ["Лютня", "Флейта", "Скрипка"]
+            "Бард": {
+                "оружие": ["Рапира", "Длинный меч", "Кинжал"],
+                "снаряжение": ["Кожаная броня", "Мантия"],
+                "инструменты": ["Набор артиста", "Набор дипломата", "Набор книг"],
+                "снаряжение класса": ["Лютня", "Флейта", "Скрипка"],
             },
-            'Варвар': {
-                'оружие': ["Секира", "Молот", "Два ручных топора"],
-                'снаряжение': ["Кожаная броня", "Кольчуга", "Обмотки"],
-                'инструменты': ["Набор путешественника"],
-                'снаряжение класса': ["Боевой рог"]
+            "Варвар": {
+                "оружие": ["Секира", "Молот", "Два ручных топора"],
+                "снаряжение": ["Кожаная броня", "Кольчуга", "Обмотки"],
+                "инструменты": ["Набор путешественника"],
+                "снаряжение класса": ["Боевой рог"],
             },
-            'Воин': {
-                'оружие': ["Двуручный меч", "Длинный меч", "Длинный лук"],
-                'снаряжение': ["Кожаная броня", "Кольчуга"],
-                'инструменты': ["Набор путешественника", "Набор исследователя подземелий"],
-                'снаряжение класса': []
+            "Воин": {
+                "оружие": ["Двуручный меч", "Длинный меч", "Длинный лук"],
+                "снаряжение": ["Кожаная броня", "Кольчуга"],
+                "инструменты": [
+                    "Набор путешественника",
+                    "Набор исследователя подземелий",
+                ],
+                "снаряжение класса": [],
             },
-            'Волшебник': {
-                'оружие': ["Посох", "Кинжал"],
-                'снаряжение': ["Мантия"],
-                'инструменты': ["Набор учёного", "Мешочек с компонентами"],
-                'снаряжение класса': ["Книга заклинаний"]
+            "Волшебник": {
+                "оружие": ["Посох", "Кинжал"],
+                "снаряжение": ["Мантия"],
+                "инструменты": ["Набор учёного", "Мешочек с компонентами"],
+                "снаряжение класса": ["Книга заклинаний"],
             },
-            'Друид': {
-                'оружие': ["Боевой", "Скимитар"],
-                'снаряжение': ["Кожаная броня", "Тканный доспех"],
-                'инструменты': ["Набор путешественника"],
-                'снаряжение класса': ["Посох друида"]
+            "Друид": {
+                "оружие": ["Боевой", "Скимитар"],
+                "снаряжение": ["Кожаная броня", "Тканный доспех"],
+                "инструменты": ["Набор путешественника"],
+                "снаряжение класса": ["Посох друида"],
             },
-            'Жрец': {
-                'оружие': ["Булава", "Боевой молот"],
-                'снаряжение': ["Чешуйчатый доспех", "Кольчуга", "Кожаный доспех"],
-                'инструменты': ["Набор путешественника", "Набор священника"],
-                'снаряжение класса': ["Священный символ и щит церкви"]
+            "Жрец": {
+                "оружие": ["Булава", "Боевой молот"],
+                "снаряжение": ["Чешуйчатый доспех", "Кольчуга", "Кожаный доспех"],
+                "инструменты": ["Набор путешественника", "Набор священника"],
+                "снаряжение класса": ["Священный символ и щит церкви"],
             },
-            'Изобретатель': {
-                'оружие': ["Меч", "Лёгкий арбалет"],
-                'снаряжение': ["Поклёпанная броня", "Чешуйчатый доспех"],
-                'инструменты': ["Воровские инструменты", "Набор исследователя подземелий"],
-                'снаряжение класса': ["Однозарядный пистолет"]
+            "Изобретатель": {
+                "оружие": ["Меч", "Лёгкий арбалет"],
+                "снаряжение": ["Поклёпанная броня", "Чешуйчатый доспех"],
+                "инструменты": [
+                    "Воровские инструменты",
+                    "Набор исследователя подземелий",
+                ],
+                "снаряжение класса": ["Однозарядный пистолет"],
             },
-            'Колдун': {
-                'оружие': ["Короткий меч", "Лёгкий арбалет"],
-                'снаряжение': ["Кожаная броня"],
-                'инструменты': ["Набор учёного", "Набор исследователя подземелий", "Мешочек с компонентами"],
-                'снаряжение класса': ["Гримуар"]
+            "Колдун": {
+                "оружие": ["Короткий меч", "Лёгкий арбалет"],
+                "снаряжение": ["Кожаная броня"],
+                "инструменты": [
+                    "Набор учёного",
+                    "Набор исследователя подземелий",
+                    "Мешочек с компонентами",
+                ],
+                "снаряжение класса": ["Гримуар"],
             },
-            'Монах': {
-                'оружие': ["Боевой посохч", "Короткий меч"],
-                'снаряжение': ["Обмотки"],
-                'инструменты': ["Набор путешественника", "Набор исследователя подземелий"],
-                'снаряжение класса': ["Чётки для ци"]
+            "Монах": {
+                "оружие": ["Боевой посохч", "Короткий меч"],
+                "снаряжение": ["Обмотки"],
+                "инструменты": [
+                    "Набор путешественника",
+                    "Набор исследователя подземелий",
+                ],
+                "снаряжение класса": ["Чётки для ци"],
             },
-            'Паладин': {
-                'оружие': ["Двуручный меч", "Боевой молот"],
-                'снаряжение': ["Кольчуга", "Латные доспехи"],
-                'инструменты': ["Набор путешественника", "Набор священника"],
-                'снаряжение класса': ["Священный символ"]
+            "Паладин": {
+                "оружие": ["Двуручный меч", "Боевой молот"],
+                "снаряжение": ["Кольчуга", "Латные доспехи"],
+                "инструменты": ["Набор путешественника", "Набор священника"],
+                "снаряжение класса": ["Священный символ"],
             },
-            'Плут': {
-                'оружие': ["Рапира", "Короткий меч"],
-                'снаряжение': ["Кожаный доспех с капюшоном"],
-                'инструменты': ["Набор взломщика", "Набор исследователя подземелий", "Набор путешественника"],
-                'снаряжение класса': ["Кинжалы"]
+            "Плут": {
+                "оружие": ["Рапира", "Короткий меч"],
+                "снаряжение": ["Кожаный доспех с капюшоном"],
+                "инструменты": [
+                    "Набор взломщика",
+                    "Набор исследователя подземелий",
+                    "Набор путешественника",
+                ],
+                "снаряжение класса": ["Кинжалы"],
             },
-            'Следопыт': {
-                'оружие': ["Два скимитара", "Два коротких меча"],
-                'снаряжение': ["Кожаная броня", "Чешуйчатый доспех"],
-                'инструменты': ["Набор путешественника", "Набор исследователя подземелий"],
-                'снаряжение класса': ["Длинный лук"]
+            "Следопыт": {
+                "оружие": ["Два скимитара", "Два коротких меча"],
+                "снаряжение": ["Кожаная броня", "Чешуйчатый доспех"],
+                "инструменты": [
+                    "Набор путешественника",
+                    "Набор исследователя подземелий",
+                ],
+                "снаряжение класса": ["Длинный лук"],
             },
-            'Чародей': {
-                'оружие': ["Два кинжала", "Короткий меч"],
-                'снаряжение': ["Мантия"],
-                'инструменты': ["Набор путешественника", "Набор исследователя подземелий", "Мешочек с компонентами"],
-                'снаряжение класса': ["Магическая семейная реликвия"]
-            }
+            "Чародей": {
+                "оружие": ["Два кинжала", "Короткий меч"],
+                "снаряжение": ["Мантия"],
+                "инструменты": [
+                    "Набор путешественника",
+                    "Набор исследователя подземелий",
+                    "Мешочек с компонентами",
+                ],
+                "снаряжение класса": ["Магическая семейная реликвия"],
+            },
         }
 
         equipment_label = QLabel(f"Выберите снаряжение для класса: {class_name}")
@@ -617,17 +682,17 @@ class EquipmentSelectionWidget(QDialog):
         layout.addWidget(equipment_label)
 
         self.equipment_checkboxes = {
-            'оружие': [],
-            'снаряжение': [],
-            'инструменты': [],
-            'снаряжение класса': []
+            "оружие": [],
+            "снаряжение": [],
+            "инструменты": [],
+            "снаряжение класса": [],
         }
 
         for category, items in equipment[class_name].items():
             layout.addWidget(self.create_equipment_groupbox(category, items))
 
-        self.finish_button = QPushButton('Закончить', self)
-        self.back_button = QPushButton('Назад', self)
+        self.finish_button = QPushButton("Закончить", self)
+        self.back_button = QPushButton("Назад", self)
         self.finish_button.clicked.connect(self.finish_creation)
         self.back_button.clicked.connect(self.return_to_previous_step)
 
@@ -635,14 +700,22 @@ class EquipmentSelectionWidget(QDialog):
         layout.addWidget(self.back_button)
         self.setStyleSheet("background-color: white; font-size: 16px;")
         self.setLayout(layout)
-        QMessageBox.information(self, 'Снаряжение', 'Выберите снаряжение персонажа (По одному предмету каждого типа)')
+        QMessageBox.information(
+            self,
+            "Снаряжение",
+            "Выберите снаряжение персонажа (По одному предмету каждого типа)",
+        )
 
     def create_equipment_groupbox(self, title, items):
         groupbox = QGroupBox(title)
         form_layout = QFormLayout()
         for item in items:
             checkbox = QCheckBox(item)
-            checkbox.stateChanged.connect(lambda state, cb=checkbox, cat=title: self.update_equipment_selection(cat, cb))
+            checkbox.stateChanged.connect(
+                lambda state, cb=checkbox, cat=title: self.update_equipment_selection(
+                    cat, cb
+                )
+            )
             form_layout.addRow(checkbox)
             self.equipment_checkboxes[title].append(checkbox)
         groupbox.setLayout(form_layout)
@@ -662,7 +735,9 @@ class EquipmentSelectionWidget(QDialog):
 
     def finish_creation(self):
         selected_race = self.description_window.selected_race
-        race_features = self.description_window.parent().race_selection_widget.races[selected_race]["features"]
+        race_features = self.description_window.parent().race_selection_widget.races[
+            selected_race
+        ]["features"]
 
         character_data = {
             "Имя": self.description_window.character_name,
@@ -670,7 +745,7 @@ class EquipmentSelectionWidget(QDialog):
             "Класс": self.description_window.class_selection_widget.selected_class,
             "Описание": self.description_window.character_description,
             "Снаряжение": self.selected_equipment,
-            "Особенности расы": race_features
+            "Особенности расы": race_features,
         }
 
         stats_and_modifiers = self.description_window.stat_selection_widget.stats
@@ -683,7 +758,11 @@ class EquipmentSelectionWidget(QDialog):
         with open(file_path, "w") as file:
             for key, value in character_data.items():
                 file.write(f"{key}: {value}\n")
-        QMessageBox.information(self, "Сохранение персонажа", f"Персонаж '{self.description_window.character_name}' успешно создан и сохранен!")
+        QMessageBox.information(
+            self,
+            "Сохранение персонажа",
+            f"Персонаж '{self.description_window.character_name}' успешно создан и сохранен!",
+        )
         self.description_window.parent().is_creating_character = False
         self.close()
 
@@ -691,7 +770,8 @@ class EquipmentSelectionWidget(QDialog):
         self.description_window.show()
         self.close()
 
-# Character list widget
+
+# Вызов списка персонажей
 class CharacterListWidget(QWidget):
     def __init__(self, parent):
         super().__init__(parent)
@@ -710,11 +790,11 @@ class CharacterListWidget(QWidget):
 
         layout.addWidget(self.character_list)
 
-        self.delete_button = QPushButton('Удалить', self)
+        self.delete_button = QPushButton("Удалить", self)
         self.delete_button.clicked.connect(self.delete_character)
         layout.addWidget(self.delete_button)
 
-        self.back_button = QPushButton('Назад', self)
+        self.back_button = QPushButton("Назад", self)
         self.back_button.clicked.connect(self.return_to_main_menu)
         layout.addWidget(self.back_button)
 
@@ -754,7 +834,8 @@ class CharacterListWidget(QWidget):
         self.parent.show()
 
 
-if __name__ == '__main__':
+# Начало программы
+if __name__ == "__main__":
     app = QApplication(sys.argv)
     image_folder = "Pictures/Background"
     icon_path = "Pictures/Icon/D&D.ico"
